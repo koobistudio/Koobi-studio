@@ -3,8 +3,7 @@ import Header from './header'
 
 import '../styles/layout.css'
 import styles from './layout.module.css'
-import Icon from './icon/index'
-import HamburgerIcon from './icon/hamburger'
+
 
 const Layout = ({ children, onHideNav, onShowNav, showNav, siteTitle }) => (
   <>
