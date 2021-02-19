@@ -89,10 +89,18 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 >Cześć! tu {site.title}</h1>
+        <h1>Cześć! tu {site.title}</h1>
         <h2>Kim jesteśmy?</h2>
         <p> Jesteśmy tacy i tacy</p>
-       
+        <form name="contact"
+          method="post"
+          data-netlify="true"
+        data-netlify-honeypot="bot-field">
+          <input name="name"
+            placeholder="Imię"
+            input type="text" />
+          <button>Wyślij</button>
+        </form>
         {projectNodes && (
           <ProjectPreviewGrid
             title="Ostatnie projekty"
