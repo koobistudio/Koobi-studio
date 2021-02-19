@@ -49,13 +49,13 @@ const ArchivePage = props => {
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
     <Layout>
-      <SEO title='Archive' />
+      <SEO title="Archive" />
       <Container>
-        <h1 className={responsiveTitle1}>Projects</h1>
+        <h1>Napisz do nas</h1>
         {projectNodes && projectNodes.length > 0 && <ProjectPreviewGrid nodes={projectNodes} />}
       </Container>
     </Layout>
-  )
+  );
 }
 
 export default ArchivePage

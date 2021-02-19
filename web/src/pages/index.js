@@ -11,53 +11,55 @@ import ProjectPreviewGrid from '../components/project-preview-grid'
 import SEO from '../components/seo'
 import Layout from '../containers/layout'
 
+
 export const query = graphql`
-  query IndexPageQuery {
-    site: sanitySiteSettings(_id: {regex: "/(drafts.|)siteSettings/"}) {
-      title
-      description
-      keywords
-    }
-    projects: allSanitySampleProject(
-      limit: 6
-      sort: {fields: [publishedAt], order: DESC}
-      filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}
-    ) {
-      edges {
-        node {
-          id
-          mainImage {
-            crop {
-              _key
-              _type
-              top
-              bottom
-              left
-              right
-            }
-            hotspot {
-              _key
-              _type
-              x
-              y
-              height
-              width
-            }
-            asset {
-              _id
-            }
-            alt
-          }
-          title
-          _rawExcerpt
-          slug {
-            current
-          }
-        }
-      }
-    }
-  }
-`
+         query IndexPageQuery {
+           site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
+             title
+             description
+             keywords
+            
+           }
+           projects: allSanitySampleProject(
+             limit: 6
+             sort: { fields: [publishedAt], order: DESC }
+             filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
+           ) {
+             edges {
+               node {
+                 id
+                 mainImage {
+                   crop {
+                     _key
+                     _type
+                     top
+                     bottom
+                     left
+                     right
+                   }
+                   hotspot {
+                     _key
+                     _type
+                     x
+                     y
+                     height
+                     width
+                   }
+                   asset {
+                     _id
+                   }
+                   alt
+                 }
+                 title
+                 _rawExcerpt
+                 slug {
+                   current
+                 }
+               }
+             }
+           }
+         }
+       `;
 
 const IndexPage = props => {
   const {data, errors} = props
@@ -87,17 +89,20 @@ const IndexPage = props => {
     <Layout>
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
+        <h1 >Cześć! tu {site.title}</h1>
+        <h2>Kim jesteśmy?</h2>
+        <p> Jesteśmy tacy i tacy</p>
+       
         {projectNodes && (
           <ProjectPreviewGrid
-            title='Latest projects'
+            title="Ostatnie projekty"
             nodes={projectNodes}
-            browseMoreHref='/archive/'
+            browseMoreHref="/archive/"
           />
         )}
       </Container>
     </Layout>
-  )
+  );
 }
 
 export default IndexPage
